@@ -1,39 +1,56 @@
-//get a random word
-
-//create underscores based on random words
-
-//get user guess
-
-//check if user guess is right 
-
-//if right add letter from answer and replace underscore
-
-//if wrong add letter to wrong guess
-
-
-
+//create arrays
 var answer = ["porsche","ferrari","toyota","mclaren","koenigsegg","nissan"];
-
 var wrongGuess = [];   
+var Wins = [];
+var guessesRemaining = 15;
+var underScore = [];
 
-var numberOfGuessesRemaining = 15;
 
-var images = ["f1.jpg","f40.jpg","gtr.jpg","supra.jpg","porsche.jpg","koenigsegg.jpg"];
 
+
+//chose word randomly from array
 var randomAnswer = answer[Math.floor(Math.random() * answer.length)];
-
-console.log(randomAnswer);
 
 var chosenAnswer = answer[randomAnswer];
 
-document.onkeyup = function() { 
-    var userGuess = event.key.toLowercase();  
+console.log(randomAnswer);
 
+document.onkeyup = function(event) {
+    chosenAnswer = answer[randomAnswer];
+    var userGuess = event.key;
+    console.log(userGuess);
+
+// create underscores    
     var generateUnderscore = function(){
         for (var i = 0; i < chosenAnswer.length; i++) {
         underScore.push('_');
         }
         return underScore;
-        }
+        console.log(generateUnderscore());
+    }
 
+var rightGuess = function() {
+ for( var i = 0; i < chosenAnswer.length; i++) {
+     if (userGuess === chosenAnswer[i]) 
+    underScore.push(userGuess);}
+    console.log(rightGuess());
 }
+}
+
+
+// create arrays
+// choose a random word from that array
+// create underscores based on how many letters in random word
+// get user input and check if user input = letter in the random word 
+// if it isnt guess remaining -1 and add the letter to wrong guess 
+// if user guess is the same then do nothing
+// repeat until all words are fully formed or out of guesses once one of them is true
+// if word is fully formed win message
+// if word isnt fully formed lose message
+// restart the game
+
+
+
+
+    
+
