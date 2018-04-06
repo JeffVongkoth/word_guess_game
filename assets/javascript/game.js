@@ -6,32 +6,33 @@ var guessesRemaining = 15;
 var underScore = [];
 
 
-
-
 //chose word randomly from array
 var randomAnswer = answer[Math.floor(Math.random() * answer.length)];
-
-var chosenAnswer = answer[randomAnswer];
-
 console.log(randomAnswer);
 
+var wordSplit = randomAnswer.split("");
+
+
 document.onkeyup = function(event) {
-    chosenAnswer = answer[randomAnswer];
+    
     var userGuess = event.key;
     console.log(userGuess);
 
 // create underscores    
     var generateUnderscore = function(){
-        for (var i = 0; i < chosenAnswer.length; i++) {
+        for (var i = 0; i < wordSplit.length; i++) {
         underScore.push('_');
         }
+    
+        console.log(underScore);
         return underScore;
-        console.log(generateUnderscore());
+        
     }
+generateUnderscore()
 
 var rightGuess = function() {
- for( var i = 0; i < chosenAnswer.length; i++) {
-     if (userGuess === chosenAnswer[i]) 
+ for( var i = 0; i < wordSplit.length; i++) {
+     if (userGuess === wordSplit[i]) 
     underScore.push(userGuess);}
     console.log(rightGuess());
 }
