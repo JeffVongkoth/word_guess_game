@@ -22,7 +22,7 @@ console.log(generateUnderscore());
 
     document.onkeydown = function (event) {
         var userGuess = event.key;
- 
+
         if (event.keyCode == 13) {
             wrongGuess = [];
             correctGuess = [];
@@ -30,18 +30,19 @@ console.log(generateUnderscore());
             underScore = [];
             gameStart = true;
             
-            document.getElementById("underScores").textContent = generateUnderscore("");
-
-            var rightGuess = function (userGuess) {
-                for (var i = 0; i < wordSplit.length; i++) {
-                    if (userGuess === wordSplit[i])
-                        correctGuess.push(userGuess);
-                }
-                return correctGuess;
-                console.log(rightGuess());
-            }
-
+            document.getElementById("underScores").textContent = generateUnderscore(" ");
+            
+            rightGuess();
         }
+
+        function rightGuess () {
+            for (var i = 0; i < wordSplit.length; i++) {
+                if (userGuess === wordSplit[i])
+                    correctGuess.push(userGuess);
+            }  
+        }
+rightGuess();
+console.log(rightGuess);
     }
 
 
