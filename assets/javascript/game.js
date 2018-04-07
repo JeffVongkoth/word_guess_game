@@ -16,34 +16,33 @@ var generateUnderscore = function () {
     for (var i = 0; i < wordSplit.length; i++) {
         underScore.push('_');
     }
+    console.log(underScore)
     return underScore;
 }
-console.log(generateUnderscore());
+generateUnderscore()
 
-    document.onkeydown = function (event) {
-        var userGuess = event.key;
+document.onkeydown = function (event) {
+    var userGuess = event.key;
 
-        if (event.keyCode == 13) {
-            wrongGuess = [];
-            correctGuess = [];
-            guessesRemaining = 15;
-            underScore = [];
-            gameStart = true;
-            
-            document.getElementById("underScores").textContent = generateUnderscore(" ");
-            
-            rightGuess();
-        }
-
-        function rightGuess () {
-            for (var i = 0; i < wordSplit.length; i++) {
-                if (userGuess === wordSplit[i])
-                    correctGuess.push(userGuess);
-            }  
-        }
-rightGuess();
-console.log(rightGuess);
+    if (event.keyCode == 115) {
+        wrongGuess = [];
+        correctGuess = [];
+        guessesRemaining = 15;
+        underScore = [];
+        gameStart = true;
     }
+    var rightGuess = function () {
+        for (var i = 0; i < wordSplit.length; i++) {
+            if (userGuess === wordSplit[i]) {
+                underScore[i] = userGuess;
+            }
+        }
+        console.log(correctGuess);
+
+    }
+    rightGuess();
+    document.getElementById("underScores").textContent = underScore.join(" ");
+}
 
 
 
