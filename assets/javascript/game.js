@@ -1,42 +1,49 @@
 //create arrays
-var answer = ["porsche","ferrari","toyota","mclaren","koenigsegg","nissan"];
-var wrongGuess = [];   
-var Wins = [];
+var answer = ["porsche", "ferrari", "toyota", "mclaren", "koenigsegg", "nissan"];
+var wrongGuess = [];
+var correctGuess = [];
 var guessesRemaining = 15;
 var underScore = [];
+var Wins = [];
+var gameStart = false;
 
 
 //chose word randomly from array
 var randomAnswer = answer[Math.floor(Math.random() * answer.length)];
 console.log(randomAnswer);
-
 var wordSplit = randomAnswer.split("");
-
-
-document.onkeyup = function(event) {
-    
-    var userGuess = event.key;
-    console.log(userGuess);
-
-// create underscores    
-    var generateUnderscore = function(){
-        for (var i = 0; i < wordSplit.length; i++) {
+var generateUnderscore = function () {
+    for (var i = 0; i < wordSplit.length; i++) {
         underScore.push('_');
-        }
-    
-        console.log(underScore);
-        return underScore;
-        
     }
-generateUnderscore()
+    return underScore;
+}
+console.log(generateUnderscore());
 
-var rightGuess = function() {
- for( var i = 0; i < wordSplit.length; i++) {
-     if (userGuess === wordSplit[i]) 
-    underScore.push(userGuess);}
-    console.log(rightGuess());
-}
-}
+    document.onkeydown = function (event) {
+        var userGuess = event.key;
+ 
+        if (event.keyCode == 13) {
+            wrongGuess = [];
+            correctGuess = [];
+            guessesRemaining = 15;
+            underScore = [];
+            gameStart = true;
+            
+            document.getElementById("underScores").textContent = generateUnderscore("");
+
+            var rightGuess = function (userGuess) {
+                for (var i = 0; i < wordSplit.length; i++) {
+                    if (userGuess === wordSplit[i])
+                        correctGuess.push(userGuess);
+                }
+                return correctGuess;
+                console.log(rightGuess());
+            }
+
+        }
+    }
+
 
 
 // create arrays
